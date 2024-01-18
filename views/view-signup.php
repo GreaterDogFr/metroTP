@@ -3,9 +3,9 @@
 // value="isset($_POST['nom']) ? $_POST['nom'] : '';"
 include '../views/templates/header.php';
 ?>
-<form action="../controllers/controller-signup.php" method="POST">
-    <div>
-        <label for="firstname">Nom</label>
+<form action="../controllers/controller-signup.php" method="POST" class="form">
+    <div class="formLines">
+        <label for="firstname">Prénom :</label>
         <input type="text" name="firstname" value="<?= isset($_POST['firstname']) ? $_POST['firstname'] : ''; ?>">
         <p class="errorText">
                 <?php 
@@ -14,8 +14,8 @@ include '../views/templates/header.php';
             </p>
         </div>
     </div>
-    <div>
-        <label for="lastname">Prenom :</label>
+    <div class="formLines">
+        <label for="lastname">Nom :</label>
         <input type="text" name="lastname" value="<?= isset($_POST['lastname']) ? $_POST['lastname'] : ''; ?>">
         <p class="errorText">
                 <?php 
@@ -23,7 +23,7 @@ include '../views/templates/header.php';
                 ?>
         </p>
     </div>
-    <div>
+    <div class="formLines">
         <label for="username">Pseudo :</label>
         <input type="text" name="username" value="<?= isset($_POST['username']) ? $_POST['username'] : ''; ?>">
         <p class="errorText">
@@ -32,7 +32,7 @@ include '../views/templates/header.php';
                 ?>
         </p>
     </div>
-    <div>
+    <div class="formLines">
         <label for="email">Adresse mail :</label>
         <input type="email" name="usermail" value="<?= isset($_POST['usermail']) ? $_POST['usermail'] : ''; ?>">
         <p class="errorText">
@@ -41,7 +41,7 @@ include '../views/templates/header.php';
                 ?>
         </p>
     </div>
-    <div>
+    <div class="formLines">
         <label for="birthday">Date de naissance :</label>
         <input type="date" name="birthday" value="<?= isset($_POST['birthday']) ? $_POST['birthday'] : ''; ?>">
         <p class="errorText">
@@ -50,12 +50,13 @@ include '../views/templates/header.php';
                 ?>
         </p>
     </div>
-    <div>
+    <div class="formLines">
         <label for="entreprise">Entreprise :</label>
         <select name="enterprise"  >
             <option value="">Choississez votre entreprise</option>
             <!-- Permet de garder un select séléctionné -->
-            <option <?php if(isset($_POST['enterprise']) && $_POST['enterprise']=="enterprise1") echo "selected"?> value="enterprise1">Entreprise 1</option>
+            <option <?php if(isset($_POST['enterprise']) && $_POST['enterprise']=="enterprise1") echo "selected"?> value=1>Entreprise 1</option>
+            <option <?php if(isset($_POST['enterprise']) && $_POST['enterprise']=="enterprise2") echo "selected"?> value=2>Entreprise 2</option>
         </select>
         <p class="errorText">
                 <?php 
@@ -63,7 +64,7 @@ include '../views/templates/header.php';
                 ?>
         </p>
     </div>
-    <div>
+    <div class="formLines">
         <label for="password">Mot de passe :</label>
         <input type="password" name="password">
         <p class="errorText">
@@ -72,7 +73,7 @@ include '../views/templates/header.php';
                 ?>
         </p>
     </div>
-    <div>
+    <div class="formLines">
         <label for="passwordconfirm">Confirmation de mot de passe :</label>
         <input type="password" name="passwordconfirm">
         <p class="errorText">
@@ -81,7 +82,7 @@ include '../views/templates/header.php';
                 ?>
         </p>
     </div>
-    <div>
+    <div class="formLines">
         <input type="checkbox" name="cgu" <?php if(isset($_POST['cgu'])) echo "checked='checked'"; ?>>
         <label for="cgu">J'accepte les CGU</label>
         <p class="errorText">
@@ -91,7 +92,7 @@ include '../views/templates/header.php';
         </p>
     </div>
 
-    <button type="submit">Valider</button>
+    <button class="submitButton" type="submit">Valider</button>
 </form>
 
 <?php
