@@ -1,8 +1,7 @@
 <?php
+session_start();
 require_once '../config.php';
 require_once '../models/Utilisateur.php';
-
-var_dump($_POST);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors = [];
@@ -26,10 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             //récupération
             $userInfos = Utilisateur::getInfos($_POST['usermail']);
-            var_dump($userInfos);
             //password_verify : Booleen pour vérifier si password haché
             if (password_verify($_POST['password'], $userInfos['USR_PASS'])){
-                echo 'connexion ok';
+                $_SESSION['usermail'] = $_POST['usermail'];
+                header("Location: ./controller-home.php");
             } else {
                 $errors['password'] = 'mauvais mdp';
             }

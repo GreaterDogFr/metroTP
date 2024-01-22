@@ -22,6 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $errors['lastname'] = 'Entrez votre prénom';
             }
         }
+        
+        // TODO: Vérfier que le username n'existe pas
 
         if (isset($_POST['username'])) {
             if (strlen($_POST['username'])>50) {
@@ -78,7 +80,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     
             Utilisateur::create($validate, $firstname, $lastname, $username, $usermail, $bday, $password, $enterprise);
-            header("Location: ./controller-signin.php");
+            header("Location: ./controllers/controller-home.php");
+            //TODO: ajouter un session start quand l'inscription est faite. Au pire, demander a Anousone niveau sécu.
         }
     }
 include '../views/view-signup.php';

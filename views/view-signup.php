@@ -3,6 +3,7 @@
 // value="isset($_POST['nom']) ? $_POST['nom'] : '';"
 include '../views/templates/header.php';
 ?>
+
 <form action="../controllers/controller-signup.php" method="POST" class="form">
     <div class="formLines">
         <label for="firstname">Prénom :</label>

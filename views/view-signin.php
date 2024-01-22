@@ -27,6 +27,10 @@ include '../views/templates/header.php';
     <button class="submitButton" type="submit">Se connecter</button>
 </form>
 
+<div>
+    <p>Pas de compte ? <a href="../controllers/controller-signup.php"> Inscrivez vous !</a></p>
+</div>
+
 <?php
 // Footer
 include '../views/templates/footer.php'
