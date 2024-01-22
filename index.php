@@ -1,4 +1,4 @@
 <?php
-header("Location: ./controllers/controller-signin.php");
+header("Location: ./controllers/controller-home.php");
 exit;
 ?>

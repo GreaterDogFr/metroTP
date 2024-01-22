@@ -80,8 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     
             Utilisateur::create($validate, $firstname, $lastname, $username, $usermail, $bday, $password, $enterprise);
-            header("Location: ./controllers/controller-home.php");
-            //TODO: ajouter un session start quand l'inscription est faite. Au pire, demander a Anousone niveau sécu.
+            header("Location: ./controller-signin.php");
         }
     }
 include '../views/view-signup.php';

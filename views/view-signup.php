@@ -96,6 +96,10 @@ include '../views/templates/header.php';
     <button class="submitButton" type="submit">Valider</button>
 </form>
 
+<div>
+    <p>Déjà Inscrit ? <a href="../controllers/controller-signin.php"> Connectez-vous !</a></p>
+</div>
+
 <?php
 // Footer
 include '../views/templates/footer.php'

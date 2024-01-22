@@ -23,11 +23,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if(!Utilisateur::checkMailExists($_POST['usermail'])) {
             $errors['usermail'] = 'utilisateur Inconnu';
         } else {
-            //récupération
-            $userInfos = Utilisateur::getInfos($_POST['usermail']);
+            //récupération des infos du profil utilisateur
+            $userinfos = Utilisateur::getInfos($_POST['usermail']);
+            var_dump($userinfos);
+            var_dump($_SESSION['user']);
             //password_verify : Booleen pour vérifier si password haché
-            if (password_verify($_POST['password'], $userInfos['USR_PASS'])){
-                $_SESSION['usermail'] = $_POST['usermail'];
+            if (password_verify($_POST['password'], $userinfos['USR_PASS'])){
+                // ? si le mdp est bon, on passe les toutesinfos dans la session
+                $_SESSION['user'] = $userinfos;
+
                 header("Location: ./controller-home.php");
             } else {
                 $errors['password'] = 'mauvais mdp';
