@@ -19,5 +19,17 @@ if(isset($_POST['logout'])) {
     header("Location: ./controller-signin.php");
 }
 
+//boutton profil
+if(isset($_POST['profile'])) {
+    header("Location: ./controller-profile.php");
+}
+//boutton ajout trajet
+if(isset($_POST['addtravel'])) {
+    header("Location: ./controller-addtravel.php");
+}
+//bouton historique
+if(isset($_POST['travelhistory'])) {
+    // header("Location: ./controller-addtravel.php");
+}
 include '../views/view-home.php';
 ?>

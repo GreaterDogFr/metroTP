@@ -12,7 +12,7 @@ include '../views/templates/header.php';
                 <?php 
                 echo isset($errors['firstname']) ? $errors['firstname'] : "";
                 ?>
-            </p>
+        </p>
         </div>
     </div>
     <div class="formLines">
@@ -56,8 +56,8 @@ include '../views/templates/header.php';
         <select name="enterprise"  >
             <option value="">Choississez votre entreprise</option>
             <!-- Permet de garder un select séléctionné -->
-            <option <?php if(isset($_POST['enterprise']) && $_POST['enterprise']=="enterprise1") echo "selected"?> value=1>Entreprise 1</option>
-            <option <?php if(isset($_POST['enterprise']) && $_POST['enterprise']=="enterprise2") echo "selected"?> value=2>Entreprise 2</option>
+            <option <?php if(isset($_POST['enterprise']) && $_POST['enterprise']=="1") echo "selected"?> value=1>Entreprise 1</option>
+            <option <?php if(isset($_POST['enterprise']) && $_POST['enterprise']=="2") echo "selected"?> value=2>Entreprise 2</option>
         </select>
         <p class="errorText">
                 <?php 
