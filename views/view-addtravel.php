@@ -3,7 +3,7 @@
 include '../views/templates/header.php';
 ?>
 <form action="../controllers/controller-addtravel.php" method="POST" class="form">
-    <div class="formlines">
+    <div class="formLines">
         <label for="traveldate">Date du voyage</label>
         <input type="date" name="traveldate" value="<?= isset($_POST['traveldate']) ? $_POST['traveldate'] : ''; ?>">
         <p class="errorText">

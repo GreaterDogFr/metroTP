@@ -34,4 +34,34 @@ class travel
             echo 'Erreur : ' . $e->getMessage();
         }
     }
+
+    public static function getInfosByUSRID(int $userid): array
+    {
+        try {
+             // Création d'un objet $database selon la classe PDO
+            $database = new PDO("mysql:host=localhost;dbname=" . DBNAME, DBUSERNAME, DBPASSWORD);
+
+             // stockage de ma requete dans une variable
+             $sql = "SELECT * FROM `travels__tvl` NATURAL JOIN `transportation__tra` WHERE `USR_ID` = :USR_ID";
+
+             // je prepare ma requête pour éviter les injections SQL
+            $query = $database->prepare($sql);
+
+            // on relie les paramètres à nos marqueurs nominatifs à l'aide d'un bindValue
+            $query->bindValue(':USR_ID', $userid, PDO::PARAM_STR);
+
+            // on execute la requête
+            $query->execute();
+
+            // on récupère le résultat de la requête dans une variable
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            // on retourne le résultat
+            return $result;
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+            die();
+        }
+        
+    }
 }

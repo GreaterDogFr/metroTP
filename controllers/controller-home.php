@@ -29,7 +29,7 @@ if(isset($_POST['addtravel'])) {
 }
 //bouton historique
 if(isset($_POST['travelhistory'])) {
-    // header("Location: ./controller-addtravel.php");
+    header("Location: ./controller-travelhistory.php");
 }
 include '../views/view-home.php';
 ?>

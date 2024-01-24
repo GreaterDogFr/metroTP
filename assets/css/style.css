@@ -213,16 +213,17 @@ body {
 .profilebtn{
   width: 200px;
   height: 30px;
-
 }
 
 .addtravelbtn {
   width: 200px;
   height: 30px;
-
+}
+.travelhistorybtn{
+  width: 200px;
+  height: 30px;
 }
 .logoutbtn {
   width: 200px;
   height: 30px;
-
 }
