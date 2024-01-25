@@ -2,12 +2,16 @@
 require_once '../config.php';
 require_once '../models/Utilisateur.php';
 require_once '../models/Travel.php';
+require_once '../models/Transport.php';
 //Session
 session_start();
 if(!isset($_SESSION['user']))
 {
     header("Location: ./controller-signin.php");
 }
+$transports = Transport::getTransports();
+var_dump($transports);
+
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     $errors = [];

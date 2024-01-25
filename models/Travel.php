@@ -2,10 +2,10 @@
 class travel
 {
     /**
-         * Methode permettant de crée un travel
+         * Méhode permettant de crée un travel
          * @param date $traveldate Date du travel
-         * @param time $traveltime temps de trajet
-         * @param string $traveldistance distnace du trajet
+         * @param time $traveltime Temps de trajet
+         * @param string $traveldistance distance du trajet
          * @param string $traveltype Type de moyen de transport utilisé
          * @param string $userid id de l'utilisateur qui créée le travel
          * 
@@ -34,7 +34,12 @@ class travel
             echo 'Erreur : ' . $e->getMessage();
         }
     }
-
+        /**
+         * Méthode permettant de sortir toutes les infos d'un travel et de son utilisateur en utilisant $userid
+         * @param int $userid Id utilisateur en cours
+         * 
+         * @return void 
+        */
     public static function getInfosByUSRID(int $userid): array
     {
         try {

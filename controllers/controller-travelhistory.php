@@ -10,7 +10,6 @@ if(!isset($_SESSION['user']))
     header("Location: ./controller-signin.php");
 }
 $travelhistory = Travel::getInfosByUSRID($_SESSION['user']['USR_ID']);
-var_dump($travelhistory);
 
 foreach($travelhistory as $travels) {
     //Format Heure

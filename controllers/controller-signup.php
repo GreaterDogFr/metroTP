@@ -1,9 +1,13 @@
 <?php
 require_once('../config.php');
 require_once('../models/Utilisateur.php');
+require_once('../models/Entreprise.php');
 
 // $nonumberpatern = "/[a-zA-ZÀ-ÿ\-]+$/";
 $paternSpecChar = '/[\'\/^£$%&*()}{@#~?><>,|=_+¬-]/';
+
+//On récupère les noms d'entreprises
+$entreprises = Entreprise::getInfos();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') 
 {
@@ -43,10 +47,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         }
     }
 
+
     if ((isset($_POST['birthday'])) && empty($_POST['birthday'])) {
         $errors['birthday'] = 'Entrez une date';
     } else {
         $bday = $_POST["birthday"];
+    }
+
+    if (isset($_POST['enterprise']) && ($_POST['enterprise'])== "0")
+    {
+        $errors['enterprise'] = "Choisissez une entreprise";
     }
 
     if (isset($_POST['password'])) {
@@ -67,7 +77,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
     if ((!isset($_POST['cgu']))) {
         $errors['cgu'] = 'Veuillez accepter la CGU';
-    }
+    }  
+
+
 
     // ? Si aucune erreur
     if (empty($errors)){

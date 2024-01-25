@@ -54,10 +54,15 @@ include '../views/templates/header.php';
     <div class="formLines">
         <label for="entreprise">Entreprise :</label>
         <select name="enterprise"  >
-            <option value="">Choississez votre entreprise</option>
+            <option value=0>Choississez votre entreprise</option>
             <!-- Permet de garder un select séléctionné -->
-            <option <?php if(isset($_POST['enterprise']) && $_POST['enterprise']=="1") echo "selected"?> value=1>Entreprise 1</option>
-            <option <?php if(isset($_POST['enterprise']) && $_POST['enterprise']=="2") echo "selected"?> value=2>Entreprise 2</option>
+            <?php 
+            foreach ($entreprises as $entreprise){
+                echo '<option value='.$entreprise['ENT_ID'].'>'.$entreprise['ENT_NAME'].'</option>';
+            }
+            // if(isset($_POST['enterprise']) && $_POST['enterprise']=="1") echo "selected"?
+            ?>
+            
         </select>
         <p class="errorText">
                 <?php 
