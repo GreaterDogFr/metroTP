@@ -2,10 +2,11 @@
 // Header
 include '../views/templates/header.php';
 ?>
-<form action="../controllers/controller-addtravel.php" method="POST" class="form">
+
+<form action="../controllers/controller-updatetravel.php" method="POST" class="form">
     <div class="formLines">
         <label for="traveldate">Date du voyage</label>
-        <input type="date" name="traveldate" value="<?= isset($_POST['traveldate']) ? $_POST['traveldate'] : ''; ?>">
+        <input type="date" name="traveldate" value="<?= isset($_SESSION['travelupdate']['TVL_DATE']) ? $_SESSION['travelupdate']['TVL_DATE'] : ''; ?>">
         <p class="errorText">
             <?php 
             echo isset($errors['traveldate']) ? $errors['traveldate'] : "";
@@ -15,7 +16,7 @@ include '../views/templates/header.php';
 
     <div class="formLines">
         <label for="traveltime">Durée du voyage(heures:minutes)</label>
-        <input type="time" name="traveltime" value="<?= isset($_POST['traveltime']) ? $_POST['traveltime'] : ''; ?>">
+        <input type="time" name="traveltime" value="<?= isset($_SESSION['travelupdate']['TVL_TIME']) ? $_SESSION['travelupdate']['TVL_TIME'] : ''; ?>">
         <p class="errorText">
             <?php 
                 echo isset($errors['traveltime']) ? $errors['traveltime'] : "";
@@ -25,7 +26,7 @@ include '../views/templates/header.php';
 
     <div class="formLines">
         <label for="traveldistance">Distance parcourue(en km)</label>
-        <input type="number" name="traveldistance" value="<?= isset($_POST['traveldistance']) ? $_POST['traveldistance'] : ''; ?>"">
+        <input type="number" name="traveldistance" value="<?= isset($_SESSION['travelupdate']['TVL_DISTANCE']) ? $_SESSION['travelupdate']['TVL_DISTANCE'] : ''; ?>"">
         <p class="errorText">
             <?php 
                 echo isset($errors['traveldistance']) ? $errors['traveldistance'] : "";
@@ -41,6 +42,7 @@ include '../views/templates/header.php';
             <?php
             foreach($transports as $transport){
                 echo '<option value='.$transport['TRA_ID'].'>'.$transport['TRA_NAME'].'</option>';
+                // TODO : Quand temps libre, réparer la sélection pour qu'elle soit automatique
             }
             ?>
         </select>
@@ -51,7 +53,6 @@ include '../views/templates/header.php';
         </p>
     </div>
 
-    
     <button class="submitButton" type="submit">Ajouter un voyage</button>
 </form>
 <div></div>

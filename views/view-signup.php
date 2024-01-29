@@ -60,6 +60,7 @@ include '../views/templates/header.php';
             foreach ($entreprises as $entreprise){
                 echo '<option value='.$entreprise['ENT_ID'].'>'.$entreprise['ENT_NAME'].'</option>';
             }
+            //TODO: remettre le echo selected dans les formulaires
             // if(isset($_POST['enterprise']) && $_POST['enterprise']=="1") echo "selected"?
             ?>
             

@@ -178,12 +178,34 @@ body {
 /*Home */
 .home {
   display: flex;
+  margin: 0 auto;
   flex-flow: column;
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 400px;
   gap: 20px;
+  border: red 1px solid;
 }
+@media screen and (max-width: 576px){
+  .home{
+    width: 300px;
+    text-align: center;
+    display: flex;
+    justify-content: start;
+    border: red 1px solid;
+  }
+}
+@media screen and (min-width: 577px) and (max-width: 768px){
+  .home{
+    width: 400;
+    text-align: center;
+    display: flex;
+    justify-content: start;
+    border: red 1px solid;
+  }
+}
+
 .welcome {
   font-family: "Kanit", sans-serif;
   font-weight: 600;

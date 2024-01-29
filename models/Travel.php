@@ -1,55 +1,55 @@
-<?php 
+<?php
 class travel
 {
     /**
-         * Méhode permettant de crée un travel
-         * @param date $traveldate Date du travel
-         * @param time $traveltime Temps de trajet
-         * @param string $traveldistance distance du trajet
-         * @param string $traveltype Type de moyen de transport utilisé
-         * @param string $userid id de l'utilisateur qui créée le travel
-         * 
-         * @return void
-         */
-    public static function create($traveldate,$traveltime,$traveldistance,$traveltype,$userid) {
+     * Méhode permettant de crée un travel
+     * @param date $traveldate Date du travel
+     * @param time $traveltime Temps de trajet
+     * @param string $traveldistance distance du trajet
+     * @param string $traveltype Type de moyen de transport utilisé
+     * @param string $userid id de l'utilisateur qui créée le travel
+     *
+     * @return void
+     */
+    public static function create($traveldate, $traveltime, $traveldistance, $traveltype, $userid)
+    {
         $database = new PDO('mysql:host=localhost;dbname=' . DBNAME . ';charset=utf8', DBUSERNAME, DBPASSWORD);
         $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = 'INSERT INTO `travels__tvl` (`TVL_DATE`,`TVL_TIME`,`TVL_DISTANCE`,`TRA_ID`,`USR_ID`) 
+        $sql = 'INSERT INTO `travels__tvl` (`TVL_DATE`,`TVL_TIME`,`TVL_DISTANCE`,`TRA_ID`,`USR_ID`)
         VALUES (:TVL_DATE, :TVL_TIME, :DISTANCE, :TRA_ID,:USR_ID)';
-        //je prepare ma requete pour eviter les injection sql,  $bdd appelle la methode prepare 
+        //je prepare ma requete pour eviter les injection sql,  $bdd appelle la methode prepare
         $query = $database->prepare($sql);
         //avec bindValue permet de mettre directement des valeurs sans crée de variable
         $query->bindValue(':TVL_DATE', $traveldate);
         $query->bindValue(':TVL_TIME', $traveltime);
-        $query->bindValue(':DISTANCE',$_POST['traveldistance'], PDO::PARAM_STR);
-        $query->bindValue(':TRA_ID',$_POST['traveltype'], PDO::PARAM_INT);
-        $query->bindValue(':USR_ID',$_SESSION['user']['USR_ID'], PDO::PARAM_INT);
+        $query->bindValue(':DISTANCE', $_POST['traveldistance'], PDO::PARAM_STR);
+        $query->bindValue(':TRA_ID', $_POST['traveltype'], PDO::PARAM_INT);
+        $query->bindValue(':USR_ID', $_SESSION['user']['USR_ID'], PDO::PARAM_INT);
 
-
-        try{
+        try {
             $query->execute();
             echo 'Travel ajouté avec succès !';
         } catch (PDOException $e) {
             echo 'Erreur : ' . $e->getMessage();
         }
     }
-        /**
-         * Méthode permettant de sortir toutes les infos d'un travel et de son utilisateur en utilisant $userid
-         * @param int $userid Id utilisateur en cours
-         * 
-         * @return void 
-        */
+    /**
+     * Méthode permettant de sortir toutes les infos d'un travel et de son utilisateur en utilisant $userid
+     * @param int $userid Id utilisateur en cours
+     *
+     * @return void
+     */
     public static function getInfosByUSRID(int $userid): array
     {
         try {
-             // Création d'un objet $database selon la classe PDO
+            // Création d'un objet $database selon la classe PDO
             $database = new PDO("mysql:host=localhost;dbname=" . DBNAME, DBUSERNAME, DBPASSWORD);
 
-             // stockage de ma requete dans une variable
-             $sql = "SELECT * FROM `travels__tvl` NATURAL JOIN `transportation__tra` WHERE `USR_ID` = :USR_ID";
+            // stockage de ma requete dans une variable
+            $sql = "SELECT * FROM `travels__tvl` NATURAL JOIN `transportation__tra` WHERE `USR_ID` = :USR_ID";
 
-             // je prepare ma requête pour éviter les injections SQL
+            // je prepare ma requête pour éviter les injections SQL
             $query = $database->prepare($sql);
 
             // on relie les paramètres à nos marqueurs nominatifs à l'aide d'un bindValue
@@ -67,6 +67,25 @@ class travel
             echo 'Erreur : ' . $e->getMessage();
             die();
         }
-        
+
+    }
+
+    public static function delete($travelid)
+    {
+        try {
+        $database = new PDO('mysql:host=localhost;dbname=' . DBNAME . ';charset=utf8', DBUSERNAME, DBPASSWORD);
+        $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = 'DELETE FROM `travels__tvl` WHERE TVL_ID = :TVL_ID ';
+
+        $query = $database->prepare($sql);
+
+        $query->bindValue(':TVL_ID', $travelid, PDO::PARAM_INT);
+
+        $query->execute();
+
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+        }
     }
 }

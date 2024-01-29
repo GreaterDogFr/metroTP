@@ -124,4 +124,33 @@ class Utilisateur
             die();
         }
     }
+
+    /**
+     * Méhode permettant de modifier un user
+     *
+     * @return void
+     */
+    public static function update($travelid, $traveldate, $traveltime, $traveldistance, $traveltype)
+    {
+        $database = new PDO('mysql:host=localhost;dbname=' . DBNAME . ';charset=utf8', DBUSERNAME, DBPASSWORD);
+        $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = 'UPDATE `travels__tvl` SET TVL_DATE = :TVL_DATE, TVL_TIME = :TVL_TIME, TVL_DISTANCE =:DISTANCE, TRA_ID = :TRA_ID 
+        WHERE TVL_ID = :TVL_ID';
+
+        $query = $database->prepare($sql);
+
+        $query->bindValue(':TVL_ID', $travelid, PDO::PARAM_INT);
+        $query->bindValue(':TVL_DATE', $traveldate);
+        $query->bindValue(':TVL_TIME', $traveltime);
+        $query->bindValue(':DISTANCE', $_POST['traveldistance'], PDO::PARAM_STR);
+        $query->bindValue(':TRA_ID', $_POST['traveltype'], PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            echo 'Travel modifié avec succès !';
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+        }
+    }
 }
