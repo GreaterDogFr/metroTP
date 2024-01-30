@@ -4,7 +4,7 @@ include '../views/templates/header.php';
 
 ?>
 <div class="home">
-    <h1 class="welcome">Bienvenue <?= $_SESSION['user']['USR_FNAME'] ?> !</h1> 
+    <h2 class="welcome">Bienvenue <span class="welcomeyellow"><?= $_SESSION['user']['USR_FNAME'] ?> !</span> </h2> 
     <p class="date"><?=$formatteddate?></p>
     <!-- //TODO: ajouter une condition d'affichage du placeholderf si l'utilisateur n'a pas de photo de profil. -->
     <img src="../assets/img/placeholder.png" alt="photo de profil" class="profilepicture">

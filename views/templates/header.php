@@ -7,3 +7,6 @@
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
+    <nav>
+        <h1 class="navtitle">Eco<span class="navtitlewhite">Challenge</span></h1>
+    </nav>
