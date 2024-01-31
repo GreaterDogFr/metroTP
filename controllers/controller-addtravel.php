@@ -10,7 +10,6 @@ if(!isset($_SESSION['user']))
     header("Location: ./controller-signin.php");
 }
 $transports = Transport::getTransports();
-var_dump($transports);
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
@@ -37,6 +36,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         $errors['traveltype'] = 'Sélectionnez un moyen de transport';
     }
 
+    //TODO: Empêcher un kilométrage trop élevé (erreur sql)
+    
     //? Si aucune erreur
     if (empty($errors)){
         $traveldate = $_POST['traveldate'];

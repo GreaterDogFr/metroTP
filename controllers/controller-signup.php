@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         if (empty($_POST['passwordconfirm'])) {
             $errors['passwordconfirm'] = 'Confirmez votre mot de passe';
         } else if ($_POST['password'] != $_POST['passwordconfirm']) {
-            $errors['passwordconfirm'] = 'Mot de passe erroné';
+            $errors['passwordconfirm'] = 'Mot de pass non identique';
         }
     }
 

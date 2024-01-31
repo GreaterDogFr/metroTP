@@ -130,6 +130,18 @@ table {
 /* css */
 /* fonts */
 @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+/* <uniquifier>: Use a uniquifier for the class name
+<weight>: Use a value from 100 to 1000 */
+
+/* .dm-sans-<uniquifier> {
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+} */
+
 /* global */
 html,
 body {
@@ -138,18 +150,23 @@ body {
 }
 
 /* header */
+
+.navlink{
+  text-decoration: none;
+  color: #fef446;
+}
 .navtitle
 {
   font-family: "Kanit", sans-serif;
   font-weight: 600;
   font-style: normal;
   font-size: 2rem;
-  color: #fef446;
 }
 
 .navtitlewhite{
   color: white;
 }
+
 
 nav {
   background-color: #8dcc23;
@@ -160,6 +177,8 @@ nav {
   align-items: center;
 }
 
+
+
 /* form */
 .form {
   display: flex;
@@ -167,9 +186,14 @@ nav {
   width: 50%;
   margin: 20px auto;
   padding: 10px 0px;
+  border: 1px solid black;
   border-radius: 10px;
-  box-shadow: 5px 5px 15px 5px #dadada;
   align-items: center;
+}
+@media screen and (max-width: 576px){
+  .form{
+    width: 90%;
+  }
 }
 
 .formLines {
@@ -179,6 +203,34 @@ nav {
   flex-flow: column;
   gap: 10px;
   margin: 10px 5px;
+  font-family: "DM Sans", sans-serif;
+}
+
+.formLinescgu {
+  width: 95%;
+  display: flex;
+  align-items: start;
+  flex-flow: row;
+  gap: 10px;
+  margin: 10px 5px;
+  font-family: "DM Sans", sans-serif;
+}
+
+
+.traveldate, .traveltime , .traveldistance, .inputforms {
+  margin-left: 10px;
+  width: 90%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: "DM Sans", sans-serif;
+}
+
+.traveltype, .entrepriseForms {
+  margin-left: 10px;
+  width: 92%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: "DM Sans", sans-serif;
 }
 
 .errorText {
@@ -189,17 +241,31 @@ nav {
 .submitButton {
   margin-left: 5px;
   background-color: white;
-  border: solid 0.5px #dadada;
+  border: solid 1px #fef446;
   border-radius: 10px;
   padding: 5px;
   transition: 0.3s ease-out;
   width: 50%;
 }
 .submitButton:hover {
-  background-color: greenyellow;
+  background-color: #fef446;
   transition: 0.3s ease-out;
 }
 
+.signedupyet {
+  font-family: "DM Sans", sans-serif;
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.signlink{
+  color: #fef446;
+}
+
+.formlabels {
+  color: #fef446;
+}
 /*Home */
 /* color scheme : #74953D , second #fef446 else white */
 .home {
@@ -219,7 +285,7 @@ nav {
     width: 100%;
     text-align: center;
     display: flex;
-    justify-content: start;
+    justify-content: center;
     /* background-color: #74953D; */
   }
 }
@@ -234,13 +300,13 @@ nav {
   }
 }
 
-.welcome {
+.welcome{
   font-family: "Kanit", sans-serif;
   font-weight: 600;
   font-style: normal;
   font-size: 2rem;
 }
-.welcomeyellow{
+.welcomeyellow, .travelyellow{
   color:#fef446;
 }
 .date {
@@ -255,6 +321,7 @@ nav {
   width: 100px;
   height: 100px;
   border-radius: 50%;
+
 }
 
 .homebuttons{
@@ -278,7 +345,6 @@ nav {
 .profilebtn:hover, .addtravelbtn:hover,.travelhistorybtn:hover {
   background-color: #fef446;
   transition: 0.3s ease-out;
-
 }
 
 .logoutbtn {
@@ -297,5 +363,65 @@ nav {
 {
   background-color: red;
   transition: 0.3s ease-out;
-
 }
+
+.travelwelcome {
+  font-family: "Kanit", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  margin: 10px 0px;
+}
+
+.travel{
+  margin-left: 10px;
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.3rem;
+  color: white;
+}
+
+.formatteddate{
+  text-transform: capitalize;
+}
+.travelbuttons{
+  margin-top: 10px;
+}
+
+.deletebtn {
+  width: 150px;
+  height: 30px;
+  border: solid 0.5px red;
+  border-radius: 10px;
+  transition: 0.3s ease-out;
+  background-color: rgba(0,0,0,0);
+  font-family: "Kanit", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 1rem;
+}
+.deletebtn:hover
+{
+  background-color: red;
+  transition: 0.3s ease-out;
+}
+.addbtn{
+  margin-left: 10px;
+  width: 150px;
+  padding: 5px;
+  border: solid 0.5px #fef446;
+  border-radius: 10px;
+  transition: 0.3s ease-out;
+  background-color: rgba(0,0,0,0);
+  font-family: "Kanit", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 1rem;
+}
+.addbtn:hover
+{
+  background-color: #fef446;
+  transition: 0.3s ease-out;
+}
+
