@@ -27,6 +27,7 @@ if(isset($_POST['logout'])) {
 if(isset($_POST['profile'])) {
     header("Location: ./controller-profile.php");
 }
+
 //boutton ajout trajet
 if(isset($_POST['addtravel'])) {
     header("Location: ./controller-addtravel.php");
@@ -37,8 +38,11 @@ if(isset($_POST['travelhistory'])) {
 }
 
 // !Debug bouton delete
-// if(isset($_POST['delete'])){
-//     Travel::deleteAllfromUser($_SESSION['user']['USR_ID']);
-// }
+if(isset($_POST['delete'])){
+    Travel::deleteAllfromUser($_SESSION['user']['USR_ID']);
+    Utilisateur::delete($_SESSION['user']['USR_ID']);
+    session_destroy();
+    Header('Location: ./controller-home.php');
+}
 include '../views/view-home.php';
 ?>

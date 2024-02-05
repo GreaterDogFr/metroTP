@@ -3,7 +3,6 @@ session_start();
 require_once '../config.php';
 require_once '../models/Utilisateur.php';
 require_once '../models/Entreprise.php';
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors = [];
 
@@ -25,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errors['usermail'] = 'utilisateur Inconnu';
         } else {
             //récupération des infos du profil utilisateur
-                
+            $userinfos = Utilisateur::getInfos($_POST['usermail']);
             //password_verify : Booleen pour vérifier si password haché
             if (password_verify($_POST['password'], $userinfos['USR_PASS'])){
                 // ? si le mdp est bon, on passe les toutesinfos dans la session

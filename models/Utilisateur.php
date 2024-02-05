@@ -127,7 +127,16 @@ class Utilisateur
 
     /**
      * Méhode permettant de modifier un user
-     *
+     * 
+     *@param int $userid id de l'utilisateur
+     *@param string $userfname prénom de l'utilisateur
+     *@param string $userlname nom de famille de l'utilisateur
+     *@param string $useruname pseudo de l'utilisateur
+     *@param string $usermail date de naissance de l'utilisateur
+     *@param string $userdesc description de l'utilisateur
+     *@param string $userpass mot de passe de l'utilisateur
+     *@param int $entid id de l'entreprise lié à l'utilisateur 
+     * 
      * @return void
      */
     public static function update($userid,$userfname,$userlname, $useruname,$userbday,$usermail,$userdesc,$userpass, $entid)
@@ -157,5 +166,29 @@ class Utilisateur
         } catch (PDOException $e) {
             echo 'Erreur : ' . $e->getMessage();
         }
+    }
+
+    /**
+     * Méthode visant a supprimer l'utilisateur de la base de données
+     * 
+     * @param int $userid
+     */
+    public static function delete($userid)
+    {
+        try {
+            $database = new PDO('mysql:host=localhost;dbname=' . DBNAME . ';charset=utf8', DBUSERNAME, DBPASSWORD);
+            $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+            $sql = 'DELETE FROM `user__usr` WHERE USR_ID = :USR_ID ';
+    
+            $query = $database->prepare($sql);
+    
+            $query->bindValue(':USR_ID', $userid, PDO::PARAM_INT);
+    
+            $query->execute();
+    
+            } catch (PDOException $e) {
+                echo 'Erreur : ' . $e->getMessage();
+            }
     }
 }

@@ -86,14 +86,6 @@ VALUES ('GoFast','illegalBusiness',77408201000034, '12 cité de la chaumière',5
 INSERT INTO EVENT__EVT(EVT_START,EVT_END,EVT_NAME,EVT_DSC,EVT_TRA, ENT_ID)
 VALUES ('2024-01-15 00:00:00', '2024-01-22 00:00:00','Se déplacer en vélo','Venez au travail en vélo','Velo, Marche',1);
 
-INSERT INTO USER__USR (ENT_ID,USR_FNAME,USR_LNAME,USR_UNAME,USR_BDAY,USR_MAIL,USR_PASS,USR_VALID)
-VALUES (1,'Robert','Ye', 'RobTheBob','1978-02-02','Rob.ye@gmail.com','ooTu6ooghei', TRUE),
-(1,'John','Doe', 'TheUsualSuspect','1963-08-15','John.doe@gmail.com','aeb8eeTh9ai', TRUE),
-(1,'Shannon','Marerro', 'MetalReese','1977-10-16','Shannon.marrero@gmail.com','Tei7aig4', TRUE),
-(2,'Charles','Chisolm', 'WiseCharlie','1991-10-10','Chisolm.charlie@gmail.com','bieNgae5th', TRUE),
-(2,'Nicholas','Larsen', 'CityHunter','1981-12-11','NickyLArson@gmail.com','100TonBonk', TRUE),
-(2,'Han','Solo', 'IShotFirst','1998-05-04','Han.solo@gmail.com','Hah7zeo4m', TRUE);
-
 INSERT INTO TRANSPORTATION__TRA (TRA_NAME)
 VALUES ('Vélo'),
 ('A pied'),
@@ -107,27 +99,3 @@ VALUES (1, 1),
 
  INSERT INTO ADMIN__ADM (ADM_MAIL,ADM_PASS)
  VALUES ('blaze.wilderm@hotmail.com','Ethi5umahg');
- 
- INSERT INTO TRAVELS__TVL(TVL_DATE,TVL_DISTANCE,TVL_TIME,TRA_ID, USR_ID)
- VALUES ('2024-01-15',15,'00:15:00',1,1),
- ('2024-01-15',15,'00:15:00',1,2),
- ('2024-01-15',15,'00:15:00',1,3),
- ('2024-01-15',15,'00:15:00',1,4),
- ('2024-01-15',15,'00:15:00',1,5),
- ('2024-01-15',15,'00:15:00',1,6),
- ('2024-01-10',15,'00:15:00',2,1),
- ('2024-01-10',15,'00:15:00',2,2),
- ('2024-01-10',15,'00:15:00',2,3),
- ('2024-01-10',15,'00:15:00',2,4),
- ('2024-01-10',15,'00:15:00',2,5),
- ('2024-01-10',15,'00:15:00',2,6),
- ('2024-01-11',15,'00:15:00',1,1),
- ('2024-01-11',15,'00:15:00',1,2),
- ('2024-01-11',15,'00:15:00',1,3),
- ('2024-01-11',15,'00:15:00',1,4),
- ('2024-01-11',15,'00:15:00',1,5),
- ('2024-01-11',15,'00:15:00',1,6),
- ('2024-01-15',15,'00:15:00',1,1),
- ('2024-01-15',15,'00:15:00',1,1),
- ('2024-01-15',15,'00:15:00',1,1),
- ('2024-01-15',15,'00:15:00',1,1);

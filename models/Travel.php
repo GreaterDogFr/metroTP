@@ -109,7 +109,7 @@ class travel
             $database = new PDO('mysql:host=localhost;dbname=' . DBNAME . ';charset=utf8', DBUSERNAME, DBPASSWORD);
             $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-            $sql = 'DELETE FROM `travels__tvl` NATURAL JOIN `user__usr` WHERE USR_ID = :USR_ID ';
+            $sql = 'DELETE FROM `travels__tvl` WHERE USR_ID = :USR_ID ';
     
             $query = $database->prepare($sql);
     

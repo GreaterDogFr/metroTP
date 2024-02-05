@@ -46,7 +46,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         $traveltype = $_POST['traveltype'];
         $userid = $_SESSION['user']['USR_ID'];
 
-        Travel::create($traveldate,$traveltime,$traveldistance,$traveltype,$userid);
+        Travel::create($traveldate
+        ,$traveltime,$traveldistance,$traveltype,$userid);
         header("Location: ./controller-home.php");
     }
 }
