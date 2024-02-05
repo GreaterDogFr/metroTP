@@ -103,7 +103,7 @@ class Utilisateur
             $database = new PDO("mysql:host=localhost;dbname=" . DBNAME, DBUSERNAME, DBPASSWORD);
 
             // stockage de ma requete dans une variable
-            $sql = "SELECT * FROM `user__usr` WHERE `USR_MAIL` = :mail";
+            $sql = "SELECT * FROM `user__usr` NATURAL JOIN `enterprise__ent` WHERE `USR_MAIL` = :mail";
 
             // je prepare ma requête pour éviter les injections SQL
             $query = $database->prepare($sql);
@@ -130,25 +130,30 @@ class Utilisateur
      *
      * @return void
      */
-    public static function update($travelid, $traveldate, $traveltime, $traveldistance, $traveltype)
+    public static function update($userid,$userfname,$userlname, $useruname,$userbday,$usermail,$userdesc,$userpass, $entid)
     {
         $database = new PDO('mysql:host=localhost;dbname=' . DBNAME . ';charset=utf8', DBUSERNAME, DBPASSWORD);
         $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = 'UPDATE `travels__tvl` SET TVL_DATE = :TVL_DATE, TVL_TIME = :TVL_TIME, TVL_DISTANCE =:DISTANCE, TRA_ID = :TRA_ID 
-        WHERE TVL_ID = :TVL_ID';
+        $sql = 'UPDATE `user__usr` SET USR_FNAME = :USR_FNAME, USR_LNAME = :USR_LNAME, USR_UNAME =:USR_UNAME, USR_BDAY = :USR_BDAY , 
+        USR_MAIL = :USR_MAIL ,USR_PASS = :USR_PASS , USR_DSC = :USR_DSC, ENT_ID = :ENT_ID
+        WHERE USR_ID = :USR_ID';
 
         $query = $database->prepare($sql);
 
-        $query->bindValue(':TVL_ID', $travelid, PDO::PARAM_INT);
-        $query->bindValue(':TVL_DATE', $traveldate);
-        $query->bindValue(':TVL_TIME', $traveltime);
-        $query->bindValue(':DISTANCE', $_POST['traveldistance'], PDO::PARAM_STR);
-        $query->bindValue(':TRA_ID', $_POST['traveltype'], PDO::PARAM_INT);
+        $query->bindValue(':USR_ID', $userid, PDO::PARAM_INT);
+        $query->bindValue(':USR_FNAME', htmlspecialchars($userfname), PDO::PARAM_STR);
+        $query->bindValue(':USR_LNAME', htmlspecialchars($userlname), PDO::PARAM_STR );
+        $query->bindValue(':USR_UNAME', htmlspecialchars($useruname), PDO::PARAM_STR );
+        $query->bindValue(':USR_BDAY', $userbday);
+        $query->bindValue(':USR_MAIL', $usermail, PDO::PARAM_STR );
+        $query->bindValue(':USR_DSC', $userdesc, PDO::PARAM_STR );
+        $query->bindValue(':USR_PASS', password_hash($userpass,PASSWORD_DEFAULT), PDO::PARAM_STR );
+        $query->bindValue(':ENT_ID', $entid, PDO::PARAM_INT);
 
         try {
             $query->execute();
-            echo 'Travel modifié avec succès !';
+            echo 'user modifié avec succès !';
         } catch (PDOException $e) {
             echo 'Erreur : ' . $e->getMessage();
         }

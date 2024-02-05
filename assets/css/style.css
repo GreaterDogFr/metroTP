@@ -216,6 +216,12 @@ nav {
   font-family: "DM Sans", sans-serif;
 }
 
+.inputdescription{
+  margin: 10px 5px;
+  width: 90%;
+  height: 100px;
+  resize: none;
+}
 
 .traveldate, .traveltime , .traveldistance, .inputforms {
   margin-left: 10px;
@@ -226,7 +232,7 @@ nav {
 }
 
 .traveltype, .entrepriseForms {
-  margin-left: 10px;
+  margin-left: 5px;
   width: 92%;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -268,35 +274,32 @@ nav {
 }
 /*Home */
 /* color scheme : #74953D , second #fef446 else white */
-.home {
+.body {
   display: flex;
   margin: 0 auto;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  height: 80%;
-  width: 400px;
   gap: 20px;
   color: white;
-  /* border: red 1px solid; */
+  margin-top: 20px;
+  
 }
 @media screen and (max-width: 576px){
-  .home{
+  .body{
     width: 100%;
     text-align: center;
     display: flex;
     justify-content: center;
-    /* background-color: #74953D; */
   }
 }
 
 @media screen and (min-width: 577px) and (max-width: 768px){
-  .home{
+  .body{
     width: 100%;
     text-align: center;
     display: flex;
     justify-content: center;
-    /* border: red 1px solid; */
   }
 }
 
@@ -305,16 +308,25 @@ nav {
   font-weight: 600;
   font-style: normal;
   font-size: 2rem;
+  color: white;
 }
 .welcomeyellow, .travelyellow{
   color:#fef446;
 }
+
+.userinfos{
+  font-family: "Kanit", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 1rem;
+}
+
 .date {
   font-family: "Kanit", sans-serif;
   font-weight: 200;
   font-style: normal;
   font-size: 1rem;
-
+  text-transform: capitalize;
 }
 
 .profilepicture {
@@ -385,6 +397,7 @@ nav {
 .formatteddate{
   text-transform: capitalize;
 }
+
 .travelbuttons{
   margin-top: 10px;
 }

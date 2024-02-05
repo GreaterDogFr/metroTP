@@ -2,7 +2,10 @@
 // Header
 include '../views/templates/header.php';
 ?>
-<form action="../controllers/controller-addtravel.php" method="POST" class="form">
+<div class="body">
+
+    <h2 class="welcome">Ajouter un <span class="welcomeyellow">trajet</span></h2>
+    <form action="../controllers/controller-addtravel.php" method="POST" class="form">
     <div class="formLines">
         <label class="formlabels" for="traveldate">Date du voyage</label>
         <input type="date" name="traveldate" class="traveldate"  value="<?= isset($_POST['traveldate']) ? $_POST['traveldate'] : ''; ?>">
@@ -18,7 +21,7 @@ include '../views/templates/header.php';
             <?= isset($errors['traveltime']) ? $errors['traveltime'] : ""; ?>
         </p>
     </div>
-
+    
     <div class="formLines">
         <label class="formlabels" for="traveldistance">Distance parcourue(en km)</label>
         <input type="number" name="traveldistance"  class="traveldistance"  value="<?= isset($_POST['traveldistance']) ? $_POST['traveldistance'] : ''; ?>"">
@@ -26,7 +29,7 @@ include '../views/templates/header.php';
             <?= isset($errors['traveldistance']) ? $errors['traveldistance'] : ""; ?>
         </p>
     </div>
-
+    
     <div class="formLines">
         <label class="formlabels" for="traveltype">Moyen de transport</label>
         <select name="traveltype" class="traveltype">
@@ -40,12 +43,12 @@ include '../views/templates/header.php';
         </select>
         <p class="errorText">
                 <?= isset($errors['traveltype']) ? $errors['traveltype'] : ""; ?>
-        </p>
-    </div>
+            </p>
+        </div>
 
     <button class="submitButton" type="submit">Ajouter un voyage</button>
 </form>
-<div></div>
+</div>
 <?php
 // Footer
 include '../views/templates/footer.php'

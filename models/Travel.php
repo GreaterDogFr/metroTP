@@ -69,6 +69,13 @@ class travel
         }
 
     }
+    /**
+     * Méthode permettant de supprimer un travel selon son id
+     * 
+     * @param int $travelid id du travel
+     * 
+     * @return void
+     */
 
     public static function delete($travelid)
     {
@@ -88,4 +95,31 @@ class travel
             echo 'Erreur : ' . $e->getMessage();
         }
     }
+
+    /**
+     * Méthode permettant de supprimer tous les travel lié a un utilisateur, idélament avant la suppression de l'user de la BDD
+     * 
+     * @param int $userid id de l'utilisateur
+     * 
+     * @return void
+     */
+
+    public static function deleteAllfromUser($userid){
+        try {
+            $database = new PDO('mysql:host=localhost;dbname=' . DBNAME . ';charset=utf8', DBUSERNAME, DBPASSWORD);
+            $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+            $sql = 'DELETE FROM `travels__tvl` NATURAL JOIN `user__usr` WHERE USR_ID = :USR_ID ';
+    
+            $query = $database->prepare($sql);
+    
+            $query->bindValue(':USR_ID', $userid, PDO::PARAM_INT);
+    
+            $query->execute();
+    
+            } catch (PDOException $e) {
+                echo 'Erreur : ' . $e->getMessage();
+            }
+    }
+
 }

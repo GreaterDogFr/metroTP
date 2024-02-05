@@ -9,7 +9,6 @@ if(!isset($_SESSION['user']))
 {
     header("Location: ./controller-signin.php");
 }
-
 // $nonumberpatern = "/[a-zA-ZÀ-ÿ\-]+$/";
 $paternSpecChar = '/[\'\/^£$%&*()}{@#~?><>,|=_+¬-]/';
 
@@ -58,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     if ((isset($_POST['birthday'])) && empty($_POST['birthday'])) {
         $errors['birthday'] = 'Entrez une date';
     } else {
-        $bday = $_POST["birthday"];
+        $userbday = $_POST["birthday"];
     }
 
     if (isset($_POST['enterprise']) && ($_POST['enterprise'])== "0")
@@ -78,22 +77,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         if (empty($_POST['passwordconfirm'])) {
             $errors['passwordconfirm'] = 'Confirmez votre mot de passe';
         } else if ($_POST['password'] != $_POST['passwordconfirm']) {
-            $errors['passwordconfirm'] = 'Mot de pass non identique';
+            $errors['passwordconfirm'] = 'Mot de passe non identique';
         }
     }
 
 
     if (empty($errors)){
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $username = $_POST['username'];
+        $userid = $_SESSION['user']['USR_ID'];
+        $userfname = $_POST['firstname'];
+        $userlname = $_POST['lastname'];
+        $useruname = $_POST['username'];
+        $userbday = $_POST['birthday'];
         $usermail = $_POST['usermail'];
-        $bday = $_POST['birthday'];
-        $password = $_POST['password'];
-        $enterprise = $_POST['enterprise'];
-        
-        // Insérer requête ici
+        $userdesc = $_POST['description'];
+        $userpass = $_POST['password'];
+        $entid = $_POST['enterprise'];
+
+        Utilisateur::update($userid,$userfname,$userlname, $useruname,$userbday,$usermail,$userdesc,$userpass, $entid);
+        Header("Location: ./controller-home.php");
     }
+    //TODO : Gérer l'insertion des photos de profil avec $_FILES
 }
 
 include '../views/view-profile.php';

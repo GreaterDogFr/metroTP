@@ -1,6 +1,7 @@
 <?php
 require_once '../config.php';
 require_once '../models/Utilisateur.php';
+require_once '../models/travel.php';
 //Récupération de la date, en français pour les jours de la semaine
 $todaysdate = new DateTime('now', new DateTimeZone('Europe/Paris'));
 $formatteddate = 
@@ -12,6 +13,9 @@ if(!isset($_SESSION['user']))
 {
     header("Location: ./controller-signin.php");
 }
+//On récupère toujours, au cas où il y a eu une modif précédemment
+$userinfos = Utilisateur::getInfos($_SESSION['user']['USR_MAIL']);
+$_SESSION['user'] = $userinfos;
 
 //Si boutton disconnect
 if(isset($_POST['logout'])) {
@@ -31,5 +35,10 @@ if(isset($_POST['addtravel'])) {
 if(isset($_POST['travelhistory'])) {
     header("Location: ./controller-travelhistory.php");
 }
+
+// !Debug bouton delete
+// if(isset($_POST['delete'])){
+//     Travel::deleteAllfromUser($_SESSION['user']['USR_ID']);
+// }
 include '../views/view-home.php';
 ?>
