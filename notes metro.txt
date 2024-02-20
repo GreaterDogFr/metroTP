@@ -1,0 +1,5 @@
+mettes de prompts de confirmation(rdiriger vers l'historique
+
+ACCESS : contraste élevé ?
+
+A terminer : TODO des fichiers, insérer des images dans la bdd et le site avec $_files
